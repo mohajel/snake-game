@@ -16,7 +16,7 @@ int main()
 
     
 
-    if (!texture.loadFromFile("./pictures/SnakeHead.png"))
+    if (!texture.loadFromFile("./pictures/SnakeBody.png"))
     {
         cerr << "cant load" << endl;
         exit(EXIT_FAILURE);
@@ -37,11 +37,30 @@ int main()
 
     backgroundSprite.setTexture(backgroundTexture);
 
-    backgroundSprite.setTextureRect(sf::IntRect(0 ,0 , 5000, 5000));
+    backgroundSprite.setTextureRect(sf::IntRect(-5 ,-5 , 5000, 5000));
     // can use thesee::
-    // sprite.setPosition(sf::Vector2f(10.f, 50.f)); // absolute position
+    sprite.setPosition(sf::Vector2f(270, 270)); // absolute position
     // sprite.move(sf::Vector2f(5.f, 10.f)); // offset relative to the current position
     // sprite.setRotation(90.f); // absolute angle
+
+    sf::Sprite sp1;
+    sf::Sprite sp2;
+    sf::Sprite sp3;
+
+    sp1.setTexture(texture);
+    sp2.setTexture(texture);
+    sp3.setTexture(texture);
+
+    sp1.setPosition(sf::Vector2f(270, 292.5)); // absolute position
+    sp2.setPosition(sf::Vector2f(270, 315)); // absolute position
+    sp3.setPosition(sf::Vector2f(270, 337.5)); // absolute position
+
+    sp1.setScale(sf::Vector2f(0.2, 0.2));
+    sp2.setScale(sf::Vector2f(0.2, 0.2));
+    sp3.setScale(sf::Vector2f(0.2, 0.2));
+
+
+
 
     while (window.isOpen())
     {
@@ -101,6 +120,9 @@ int main()
         window.draw(backgroundSprite);
         // window.draw(shape);
         window.draw(sprite);
+        window.draw(sp1);
+        window.draw(sp2);
+        window.draw(sp3);
         window.display();
     }
 
