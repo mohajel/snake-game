@@ -32,7 +32,6 @@ void Snake::draw()
     for (it = snakeCoordinate.begin(); it != prev(snakeCoordinate.end()); it++) 
         drawBody(&(*it));
     drawHead(&(*(it ++)));
-
 }
 
 bool Snake::move(Direction direction, Apple *apple)
@@ -57,7 +56,7 @@ bool Snake::move(Direction direction, Apple *apple)
         this->dead = true;
     }
     
-    head.direction = direction;
+    this->snakeCoordinate.back().direction = direction;
     this->snakeCoordinate.push_back(Coordinate{x, y, direction});
 
     if (canEatApple(appleCooridinate))
@@ -71,6 +70,12 @@ bool Snake::move(Direction direction, Apple *apple)
 bool Snake::isDead()
 {
     return this->dead;
+}
+
+void Snake::printDirections()
+{
+    for (auto const& c : this->snakeCoordinate) 
+        cout << c.direction << "...";
 }
 
 void Snake::drawBody(Coordinate *coordinate)
@@ -103,7 +108,7 @@ void Snake::drawBody(Coordinate *coordinate)
         case Direction::down: y += 0.5; break;
     }
     bodySprite.setPosition(sf::Vector2f(x * Tile_SIZE, y * Tile_SIZE));
-    // window->draw(bodySprite);
+    window->draw(bodySprite);
 }
 
 void Snake::drawHead(Coordinate *coordinate)

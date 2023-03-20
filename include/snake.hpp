@@ -18,6 +18,8 @@ public:
     bool move(Direction direction, Apple *apple);
     bool isDead();
 
+    void printDirections();
+
 
 private:
     void drawBody(Coordinate *coordinate);

@@ -21,6 +21,7 @@ private:
     Direction direction;
 
     bool gameFinished;
+    bool keyPressed;
     int speed;
     void getTextures();
     void createBackgroundSprite();

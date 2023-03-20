@@ -15,7 +15,8 @@ SnakeGame::SnakeGame(int speed = 1)
     :
     speed(speed),
     gameFinished(false),
-    direction(startDirection)
+    direction(startDirection),
+    keyPressed(false)
 {
     this->getTextures();
     this->createBackgroundSprite();
@@ -51,6 +52,7 @@ void SnakeGame::start()
         {
             elapsedTime = clock.restart();
             snake->move(this->direction, this->apple);
+            keyPressed = false;
             if (snake->isDead())
                 this->gameFinished = true;
         }
@@ -73,9 +75,8 @@ void SnakeGame::getTextures()
         cerr << "CANT LOAD " << SNAKE_HEAD << endl;
     if (!this->backgroundTexture.loadFromFile(BACKGROUND_IMG))
         cerr << "CANT LOAD " << BACKGROUND_IMG << endl;
-
     if (!this->appleTexture.loadFromFile(APPLE_IMAGE))
-    cerr << "CANT LOAD " << APPLE_IMAGE << endl;
+        cerr << "CANT LOAD " << APPLE_IMAGE << endl;
 
     this->backgroundTexture.setSmooth(true);
     this->snakeHeadTexture.setSmooth(true);
@@ -110,26 +111,30 @@ void SnakeGame::handleEvents(sf::Event * event)
     {
         cout << "TEXT_ENTERED::" << static_cast<char>(event->text.unicode) << endl;
     }
-    else if (event->type == sf::Event::KeyPressed)
+    else if (event->type == sf::Event::KeyPressed && keyPressed == false)
     {
         if (event->key.code == sf::Keyboard::Right && this->direction != Direction::left)
         {
             cout << "RIGHT_KEY_PRESSED" << endl;
+            keyPressed = true;
             this->direction = Direction::right;
         }
         else if (event->key.code == sf::Keyboard::Left && this->direction != Direction::right)
         {
             cout << "LEFT_KEY_PRESSED" << endl;
+            keyPressed = true;
             this->direction = Direction::left;
         }
         else if (event->key.code == sf::Keyboard::Up && this->direction != Direction::down)
         {
             cout << "UP_KEY_PRESSED" << endl;
+            keyPressed = true;
             this->direction = Direction::up;
         }
         else if (event->key.code == sf::Keyboard::Down && this->direction != Direction::up)
         {
             cout << "DOWN_KEY_PRESSED" << endl;
+            keyPressed = true;
             this->direction = Direction::down;
         }
     }
