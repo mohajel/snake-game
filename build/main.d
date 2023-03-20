@@ -209,7 +209,8 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream \
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc \
- include/../include/game.hpp
+ include/../include/game.hpp include/../include/snake.hpp \
+ include/../include/manual.hpp include/../include/manual.hpp
 src/main.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp :
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp :
@@ -421,4 +422,5 @@ src/main.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics/Text.hpp :
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream :
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc :
- include/../include/game.hpp :
+ include/../include/game.hpp include/../include/snake.hpp :
+ include/../include/manual.hpp include/../include/manual.hpp :

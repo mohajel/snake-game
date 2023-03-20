@@ -5,41 +5,58 @@
 
 #include "../include/game.hpp"
 #include "../include/manual.hpp"
+#include "../include/snake.hpp"
+
 
 using namespace std;
 
-SnakeGame::SnakeGame(int x)
+SnakeGame::SnakeGame(int speed)
+    :
+    speed(speed),
+    gameFinished(false),
+    direction(startDirection)
 {
     this->getTextures();
     this->createBackgroundSprite();
+    this->window = new sf::RenderWindow(
+        sf::VideoMode(WINDOWS_SIZE, WINDOWS_SIZE), GAME_HEADER_NAME);
+
+    this->snake = new Snake(this->snakeBodyTexture, 
+                            this->snakeHeadTexture, this->window);
+}
+
+SnakeGame::~SnakeGame()
+{
+    this->exitGame();
+    window->close();
+    delete this->window;
+    delete this->snake;
 }
 
 void SnakeGame::start()
 {
-    sf::RenderWindow window(sf::VideoMode(WINDOWS_SIZE, WINDOWS_SIZE), GAME_HEADER_NAME);
     sf::Clock clock;
-
-    while (window.isOpen())
+    while (!this->gameFinished)
     {
-        sf::Time elapsed = clock.getElapsedTime();
-        cout << elapsed.asMilliseconds() << endl;
-
+        sf::Time elapsedTime = clock.getElapsedTime();
         sf::Event event;
-        while (window.pollEvent(event))
+        while (window->pollEvent(event))
             this->handleEvents(& event);
 
-        window.clear();
+        if(elapsedTime.asMilliseconds() >= MAX_MOVE_SPEED / this->speed)
+        {
+            elapsedTime = clock.restart();
+            snake->move(this->direction);
+            if (snake->isDead())
+                this->gameFinished = true;
+        }
 
-        window.draw(backgroundSprite);
-        // window.draw(shape);
-        // window.draw(sprite);
-        // window.draw(sp1);
-        // window.draw(sp2);
-        // window.draw(sp3);
-        window.display();
+        window->clear();
+        window->draw(backgroundSprite);
+        snake->draw();
+
+        window->display();
     }
-
-
 }
 
 void SnakeGame::getTextures()
@@ -54,7 +71,6 @@ void SnakeGame::getTextures()
     this->backgroundTexture.setSmooth(true);
     this->snakeHeadTexture.setSmooth(true);
     this->snakeBodyTexture.setSmooth(true);
-
     this->backgroundTexture.setRepeated(true);
 }
 
@@ -62,57 +78,67 @@ void SnakeGame::createBackgroundSprite()
 {
     this->backgroundSprite.setScale(sf::Vector2f(0.8, 0.8));
     this->backgroundSprite.setTexture(this->backgroundTexture);
-
     this->backgroundSprite.setTextureRect(sf::IntRect(-5, -5, 5000, 5000));
 }
 
-
 void SnakeGame::handleEvents(sf::Event * event)
 {
-            if (event->type == sf::Event::Closed)
-                cout << "close windows ..." << endl;
-                // window.close();
+    if (event->type == sf::Event::Closed)
+    {
+        cout << "WINDOWS_CLOSE_EVENT" << endl;
+        this->gameFinished = true;
+    }
+    else if (event->type == sf::Event::LostFocus)
+    {
+        cout << "WINDOWS_LOST_FOCUS" << endl;
+    }
+    else if (event->type == sf::Event::GainedFocus)
+    {
+        cout << "WINDOWS_GAINED_FOCUS" << endl;
+    }
+    else if (event->type == sf::Event::TextEntered)
+    {
+        cout << "TEXT_ENTERED::" << static_cast<char>(event->text.unicode) << endl;
+    }
+    else if (event->type == sf::Event::KeyPressed)
+    {
+        if (event->key.code == sf::Keyboard::Right)
+        {
+            cout << "RIGHT_KEY_PRESSED" << endl;
+            this->direction = Direction::right;
+        }
+        else if (event->key.code == sf::Keyboard::Left)
+        {
+            cout << "LEFT_KEY_PRESSED" << endl;
+            this->direction = Direction::left;
+        }
+        else if (event->key.code == sf::Keyboard::Up)
+        {
+            cout << "UP_KEY_PRESSED" << endl;
+            this->direction = Direction::up;
+        }
+        else if (event->key.code == sf::Keyboard::Down)
+        {
+            cout << "DOWN_KEY_PRESSED" << endl;
+            this->direction = Direction::down;
+        }
+    }
+    else if (event->type == sf::Event::MouseButtonPressed)
+    {
+        if (event->mouseButton.button == sf::Mouse::Right)
+        {
+            cout << "right click" << endl;
+        }  
+        else if (event->mouseButton.button == sf::Mouse::Left)
+        {
+            cout << "left click" << endl;
+        }  
+    }
+}
 
-            else if (event->type == sf::Event::LostFocus)
-            {
-                cout << "lost focous..." << endl;
-            }
-            else if (event->type == sf::Event::GainedFocus)
-            {
-                cout << "gained focous..." << endl;
-            }
-            else if (event->type == sf::Event::TextEntered)
-            {
-                cout << "char::" << static_cast<char>(event->text.unicode) << endl;
-            }
-            else if (event->type == sf::Event::KeyPressed)
-            {
-                if (event->key.code == sf::Keyboard::Right)
-                {
-                    cout << "go right.." << endl;
-                }
-                else if (event->key.code == sf::Keyboard::Left)
-                {
-                    cout << "go left.." << endl;
-                }
-                else if (event->key.code == sf::Keyboard::Up)
-                {
-                    cout << "go up.." << endl;
-                }
-                else if (event->key.code == sf::Keyboard::Down)
-                {
-                    cout << "go down.." << endl;
-                }
-            }
-            else if (event->type == sf::Event::MouseButtonPressed)
-            {
-                if (event->mouseButton.button == sf::Mouse::Right)
-                {
-                    cout << "right click" << endl;
-                }  
-                else if (event->mouseButton.button == sf::Mouse::Left)
-                {
-                    cout << "left click" << endl;
-                }  
-            }
+void SnakeGame::exitGame()
+{
+    cout << "***\tGAME FINISHED\t***" << endl;
+    cout << "*******************************************" << endl;
+    // apple->printScore();
 }

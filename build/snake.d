@@ -1,4 +1,4 @@
-build/game.o: src/game.cpp /usr/include/stdc-predef.h \
+build/snake.o: src/snake.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -209,10 +209,9 @@ build/game.o: src/game.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream \
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc \
- src/../include/game.hpp src/../include/snake.hpp \
- src/../include/manual.hpp src/../include/manual.hpp \
- src/../include/snake.hpp
-src/game.cpp /usr/include/stdc-predef.h :
+ src/../include/snake.hpp src/../include/manual.hpp \
+ src/../include/manual.hpp
+src/snake.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp :
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp :
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp :
@@ -423,6 +422,5 @@ src/game.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics/Text.hpp :
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream :
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc :
- src/../include/game.hpp src/../include/snake.hpp :
- src/../include/manual.hpp src/../include/manual.hpp :
- src/../include/snake.hpp :
+ src/../include/snake.hpp src/../include/manual.hpp :
+ src/../include/manual.hpp :

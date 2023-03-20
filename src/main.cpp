@@ -2,13 +2,14 @@
 #include <iostream>
 
 #include <../include/game.hpp>
+#include <../include/manual.hpp>
 
 using namespace std;
 
 int main()
 {
-    SnakeGame * g = new SnakeGame(12);
-    g->start();
+    SnakeGame game(1);
+    game.start();
     
     // sf::RenderWindow window(sf::VideoMode(540, 540), "SNAKE__GAME");
     // sf::CircleShape shape(100.f);
