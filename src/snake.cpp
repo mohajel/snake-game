@@ -108,6 +108,7 @@ void Snake::drawBody(Coordinate *coordinate)
         case Direction::down: y += 0.5; break;
     }
     bodySprite.setPosition(sf::Vector2f(x * Tile_SIZE, y * Tile_SIZE));
+    bodySprite.setColor(BODY_SECOND_COLOUR);
     window->draw(bodySprite);
 }
 
