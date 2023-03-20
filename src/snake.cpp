@@ -49,13 +49,11 @@ bool Snake::move(Direction direction, Apple *apple)
         case Direction::left: x --; break;
         case Direction::down: y ++; break;
     }
-
     if (!isValidCoordinate(x, y))
     {
         cout << "WAY_WAY_WAY" << endl;
         this->dead = true;
     }
-    
     this->snakeCoordinate.back().direction = direction;
     this->snakeCoordinate.push_back(Coordinate{x, y, direction});
 
@@ -159,10 +157,6 @@ void Snake::createInitialCoordinate()
     Coordinate c2 {5, 4, Direction::right};
     Coordinate c3 {6, 4, Direction::right};
 
-    // Coordinate c1 {4, 4, Direction::down};
-    // Coordinate c2 {4, 5, Direction::right};
-    // Coordinate c3 {5, 5, Direction::up};
-    // Coordinate c4 {5, 4, Direction::up};
     snakeCoordinate.push_back(c1);
     snakeCoordinate.push_back(c2);
     snakeCoordinate.push_back(c3);

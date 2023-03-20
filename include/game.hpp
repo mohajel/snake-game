@@ -9,19 +9,17 @@
 
 class SnakeGame
 {
-
 public:
     SnakeGame(int speed);
     ~SnakeGame();
-
     void start();
 
 private:
-
     Direction direction;
 
     bool gameFinished;
     bool keyPressed;
+    bool paused;
     int speed;
     void getTextures();
     void createBackgroundSprite();
@@ -39,7 +37,5 @@ private:
     Apple *apple;
 
 };
-
-
 
 #endif // __GAME__

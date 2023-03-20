@@ -8,7 +8,6 @@
 #include "../include/snake.hpp"
 #include "../include/apple.hpp"
 
-
 using namespace std;
 
 SnakeGame::SnakeGame(int speed = 1)
@@ -16,7 +15,8 @@ SnakeGame::SnakeGame(int speed = 1)
     speed(speed),
     gameFinished(false),
     direction(startDirection),
-    keyPressed(false)
+    keyPressed(false),
+    paused(false)
 {
     this->getTextures();
     this->createBackgroundSprite();
@@ -48,7 +48,7 @@ void SnakeGame::start()
         while (window->pollEvent(event))
             this->handleEvents(& event);
 
-        if(elapsedTime.asMilliseconds() >= MAX_MOVE_SPEED / this->speed)
+        if(elapsedTime.asMilliseconds() >= MAX_MOVE_SPEED / this->speed && !this->paused)
         {
             elapsedTime = clock.restart();
             snake->move(this->direction, this->apple);
@@ -56,13 +56,10 @@ void SnakeGame::start()
             if (snake->isDead())
                 this->gameFinished = true;
         }
-
         window->clear();
-
         window->draw(backgroundSprite);
         apple->draw();
         snake->draw();
-
         window->display();
     }
 }
@@ -102,10 +99,12 @@ void SnakeGame::handleEvents(sf::Event * event)
     else if (event->type == sf::Event::LostFocus)
     {
         cout << "WINDOWS_LOST_FOCUS" << endl;
+        this->paused = true;
     }
     else if (event->type == sf::Event::GainedFocus)
     {
         cout << "WINDOWS_GAINED_FOCUS" << endl;
+        this->paused = false;
     }
     else if (event->type == sf::Event::TextEntered)
     {
