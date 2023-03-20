@@ -22,7 +22,10 @@ public:
 private:
     void drawBody(Coordinate *coordinate);
     void drawHead(Coordinate *coordinate);
-    
+
+    bool canEatApple(Coordinate appleCoordinate);
+    bool isValidCoordinate(int x, int y);
+
     void createInitialCoordinate();
 
     bool dead;

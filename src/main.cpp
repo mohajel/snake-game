@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    SnakeGame game(1);
+    SnakeGame game(MOVE_SPEED);
     game.start();
     
     // sf::RenderWindow window(sf::VideoMode(540, 540), "SNAKE__GAME");

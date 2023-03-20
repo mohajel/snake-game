@@ -25,6 +25,7 @@ Apple::~Apple()
 
 void Apple::eatApple()
 {
+    cout << "GOOD_JOB - SCORE:" << this->scoreCount << endl;
     this->scoreCount ++;
     this->coordinate = this->getRandomCoordinate();
 }

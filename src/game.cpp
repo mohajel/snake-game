@@ -56,7 +56,7 @@ void SnakeGame::start()
         }
 
         window->clear();
-        
+
         window->draw(backgroundSprite);
         apple->draw();
         snake->draw();
@@ -112,22 +112,22 @@ void SnakeGame::handleEvents(sf::Event * event)
     }
     else if (event->type == sf::Event::KeyPressed)
     {
-        if (event->key.code == sf::Keyboard::Right)
+        if (event->key.code == sf::Keyboard::Right && this->direction != Direction::left)
         {
             cout << "RIGHT_KEY_PRESSED" << endl;
             this->direction = Direction::right;
         }
-        else if (event->key.code == sf::Keyboard::Left)
+        else if (event->key.code == sf::Keyboard::Left && this->direction != Direction::right)
         {
             cout << "LEFT_KEY_PRESSED" << endl;
             this->direction = Direction::left;
         }
-        else if (event->key.code == sf::Keyboard::Up)
+        else if (event->key.code == sf::Keyboard::Up && this->direction != Direction::down)
         {
             cout << "UP_KEY_PRESSED" << endl;
             this->direction = Direction::up;
         }
-        else if (event->key.code == sf::Keyboard::Down)
+        else if (event->key.code == sf::Keyboard::Down && this->direction != Direction::up)
         {
             cout << "DOWN_KEY_PRESSED" << endl;
             this->direction = Direction::down;
