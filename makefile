@@ -11,7 +11,7 @@ SOURCES   := $(shell find $(SRCDIR) -type f -name *.c*)
 HEDEARS   := $(shell find $(HEADERDIR) -type f -name *.h*)
 OBJECTS   := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(addsuffix .o,$(basename $(SOURCES))))
 DEPS      := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(addsuffix .d,$(basename $(SOURCES))))
-CFLAGS    := -Wall 
+CFLAGS    := 
 LIB       := -lsfml-graphics -lsfml-window -lsfml-system
 INC       := -I include -I src
 

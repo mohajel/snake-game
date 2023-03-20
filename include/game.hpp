@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "snake.hpp"
+#include "apple.hpp"
 
 class SnakeGame
 {
@@ -30,9 +31,11 @@ private:
     sf::Texture snakeBodyTexture;
     sf::Texture backgroundTexture;
     sf::Texture snakeHeadTexture;
+    sf::Texture appleTexture;
 
     sf::Sprite backgroundSprite;
     Snake *snake;
+    Apple *apple;
 
 };
 

@@ -210,8 +210,11 @@ build/game.o: src/game.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream \
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc \
  src/../include/game.hpp src/../include/snake.hpp \
- src/../include/manual.hpp src/../include/manual.hpp \
- src/../include/snake.hpp
+ /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h \
+ /usr/include/c++/12/bits/allocated_ptr.h \
+ /usr/include/c++/12/bits/list.tcc src/../include/manual.hpp \
+ src/../include/apple.hpp src/../include/manual.hpp \
+ src/../include/snake.hpp src/../include/apple.hpp
 src/game.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp :
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp :
@@ -424,5 +427,8 @@ src/game.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream :
  /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc :
  src/../include/game.hpp src/../include/snake.hpp :
- src/../include/manual.hpp src/../include/manual.hpp :
- src/../include/snake.hpp :
+ /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h :
+ /usr/include/c++/12/bits/allocated_ptr.h :
+ /usr/include/c++/12/bits/list.tcc src/../include/manual.hpp :
+ src/../include/apple.hpp src/../include/manual.hpp :
+ src/../include/snake.hpp src/../include/apple.hpp :

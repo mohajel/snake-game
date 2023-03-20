@@ -57,11 +57,11 @@ int main()
     // sp2.setTexture(texture);
     // sp3.setTexture(texture);
 
-    // sp1.setPosition(sf::Vector2f(270, 292.5)); // absolute position
+    // 
     // sp2.setPosition(sf::Vector2f(270, 315)); // absolute position
     // sp3.setPosition(sf::Vector2f(270, 337.5)); // absolute position
 
-    // sp1.setScale(sf::Vector2f(0.2, 0.2));
+    // 
     // sp2.setScale(sf::Vector2f(0.2, 0.2));
     // sp3.setScale(sf::Vector2f(0.2, 0.2));
 

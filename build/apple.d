@@ -1,10 +1,5 @@
-build/snake.o: src/snake.cpp /usr/include/stdc-predef.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
- /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
- /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
- /usr/include/c++/12/ostream /usr/include/c++/12/ios \
- /usr/include/c++/12/iosfwd \
+build/apple.o: src/apple.cpp /usr/include/stdc-predef.h \
+ /usr/include/c++/12/iostream \
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/os_defines.h \
@@ -13,7 +8,8 @@ build/snake.o: src/snake.cpp /usr/include/stdc-predef.h \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h \
- /usr/include/c++/12/pstl/pstl_config.h \
+ /usr/include/c++/12/pstl/pstl_config.h /usr/include/c++/12/ostream \
+ /usr/include/c++/12/ios /usr/include/c++/12/iosfwd \
  /usr/include/c++/12/bits/stringfwd.h \
  /usr/include/c++/12/bits/memoryfwd.h /usr/include/c++/12/bits/postypes.h \
  /usr/include/c++/12/cwchar /usr/include/wchar.h \
@@ -128,7 +124,12 @@ build/snake.o: src/snake.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/ctype_inline.h \
  /usr/include/c++/12/bits/locale_facets.tcc \
  /usr/include/c++/12/bits/basic_ios.tcc \
- /usr/include/c++/12/bits/ostream.tcc \
+ /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream \
+ /usr/include/c++/12/bits/istream.tcc /usr/include/SFML/Graphics.hpp \
+ /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
+ /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \
+ /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
+ /usr/include/SFML/System/Err.hpp \
  /usr/include/SFML/System/FileInputStream.hpp \
  /usr/include/SFML/System/InputStream.hpp \
  /usr/include/SFML/System/NonCopyable.hpp \
@@ -207,20 +208,10 @@ build/snake.o: src/snake.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream \
- /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc \
- /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h \
- /usr/include/c++/12/bits/allocated_ptr.h \
- /usr/include/c++/12/bits/list.tcc src/../include/snake.hpp \
- src/../include/manual.hpp src/../include/apple.hpp \
- src/../include/manual.hpp src/../include/apple.hpp
-src/snake.cpp /usr/include/stdc-predef.h :
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp :
- /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp :
- /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp :
- /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp :
- /usr/include/c++/12/ostream /usr/include/c++/12/ios :
- /usr/include/c++/12/iosfwd :
+ /usr/include/SFML/Graphics/VertexBuffer.hpp src/../include/apple.hpp \
+ src/../include/manual.hpp
+src/apple.cpp /usr/include/stdc-predef.h :
+ /usr/include/c++/12/iostream :
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h :
  /usr/include/bits/wordsize.h :
  /usr/include/c++/12/x86_64-redhat-linux/bits/os_defines.h :
@@ -229,7 +220,8 @@ src/snake.cpp /usr/include/stdc-predef.h :
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h :
  /usr/include/gnu/stubs-64.h :
  /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h :
- /usr/include/c++/12/pstl/pstl_config.h :
+ /usr/include/c++/12/pstl/pstl_config.h /usr/include/c++/12/ostream :
+ /usr/include/c++/12/ios /usr/include/c++/12/iosfwd :
  /usr/include/c++/12/bits/stringfwd.h :
  /usr/include/c++/12/bits/memoryfwd.h /usr/include/c++/12/bits/postypes.h :
  /usr/include/c++/12/cwchar /usr/include/wchar.h :
@@ -344,7 +336,12 @@ src/snake.cpp /usr/include/stdc-predef.h :
  /usr/include/c++/12/x86_64-redhat-linux/bits/ctype_inline.h :
  /usr/include/c++/12/bits/locale_facets.tcc :
  /usr/include/c++/12/bits/basic_ios.tcc :
- /usr/include/c++/12/bits/ostream.tcc :
+ /usr/include/c++/12/bits/ostream.tcc /usr/include/c++/12/istream :
+ /usr/include/c++/12/bits/istream.tcc /usr/include/SFML/Graphics.hpp :
+ /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp :
+ /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp :
+ /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp :
+ /usr/include/SFML/System/Err.hpp :
  /usr/include/SFML/System/FileInputStream.hpp :
  /usr/include/SFML/System/InputStream.hpp :
  /usr/include/SFML/System/NonCopyable.hpp :
@@ -423,10 +420,5 @@ src/snake.cpp /usr/include/stdc-predef.h :
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl :
  /usr/include/SFML/Graphics/Sprite.hpp :
  /usr/include/SFML/Graphics/Text.hpp :
- /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/12/iostream :
- /usr/include/c++/12/istream /usr/include/c++/12/bits/istream.tcc :
- /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h :
- /usr/include/c++/12/bits/allocated_ptr.h :
- /usr/include/c++/12/bits/list.tcc src/../include/snake.hpp :
- src/../include/manual.hpp src/../include/apple.hpp :
- src/../include/manual.hpp src/../include/apple.hpp :
+ /usr/include/SFML/Graphics/VertexBuffer.hpp src/../include/apple.hpp :
+ src/../include/manual.hpp :

@@ -6,11 +6,12 @@
 #include "../include/game.hpp"
 #include "../include/manual.hpp"
 #include "../include/snake.hpp"
+#include "../include/apple.hpp"
 
 
 using namespace std;
 
-SnakeGame::SnakeGame(int speed)
+SnakeGame::SnakeGame(int speed = 1)
     :
     speed(speed),
     gameFinished(false),
@@ -23,6 +24,8 @@ SnakeGame::SnakeGame(int speed)
 
     this->snake = new Snake(this->snakeBodyTexture, 
                             this->snakeHeadTexture, this->window);
+    
+    this->apple = new Apple(this->appleTexture, this->window);
 }
 
 SnakeGame::~SnakeGame()
@@ -31,6 +34,7 @@ SnakeGame::~SnakeGame()
     window->close();
     delete this->window;
     delete this->snake;
+    delete this->apple;
 }
 
 void SnakeGame::start()
@@ -46,13 +50,15 @@ void SnakeGame::start()
         if(elapsedTime.asMilliseconds() >= MAX_MOVE_SPEED / this->speed)
         {
             elapsedTime = clock.restart();
-            snake->move(this->direction);
+            snake->move(this->direction, this->apple);
             if (snake->isDead())
                 this->gameFinished = true;
         }
 
         window->clear();
+        
         window->draw(backgroundSprite);
+        apple->draw();
         snake->draw();
 
         window->display();
@@ -68,9 +74,13 @@ void SnakeGame::getTextures()
     if (!this->backgroundTexture.loadFromFile(BACKGROUND_IMG))
         cerr << "CANT LOAD " << BACKGROUND_IMG << endl;
 
+    if (!this->appleTexture.loadFromFile(APPLE_IMAGE))
+    cerr << "CANT LOAD " << APPLE_IMAGE << endl;
+
     this->backgroundTexture.setSmooth(true);
     this->snakeHeadTexture.setSmooth(true);
     this->snakeBodyTexture.setSmooth(true);
+    this->appleTexture.setSmooth(true);
     this->backgroundTexture.setRepeated(true);
 }
 
@@ -140,5 +150,5 @@ void SnakeGame::exitGame()
 {
     cout << "***\tGAME FINISHED\t***" << endl;
     cout << "*******************************************" << endl;
-    // apple->printScore();
+    apple->printScore();
 }
