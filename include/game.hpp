@@ -2,6 +2,7 @@
 #define __GAME__
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 
 #include "snake.hpp"

@@ -1,7 +1,9 @@
 // In the Name of God
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp> 
 #include <iostream>
+#include <unistd.h>  
 
 #include "../include/game.hpp"
 #include "../include/manual.hpp"
@@ -152,7 +154,13 @@ void SnakeGame::handleEvents(sf::Event * event)
 
 void SnakeGame::exitGame()
 {
+    sf::SoundBuffer gameFinishBuffer;
+    gameFinishBuffer.loadFromFile(GAME_FINISH_SOUND);
+    sf::Sound gameFinishSound;
+    gameFinishSound.setBuffer(gameFinishBuffer);
+    gameFinishSound.play();
     cout << "***\tGAME FINISHED\t***" << endl;
     cout << "*******************************************" << endl;
     apple->printScore();
+    sleep(TIME_TO_WAIT_AFTER_GAME_FINISHED);
 }

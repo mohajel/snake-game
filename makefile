@@ -12,7 +12,7 @@ HEDEARS   := $(shell find $(HEADERDIR) -type f -name *.h*)
 OBJECTS   := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(addsuffix .o,$(basename $(SOURCES))))
 DEPS      := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(addsuffix .d,$(basename $(SOURCES))))
 CFLAGS    := 
-LIB       := -lsfml-graphics -lsfml-window -lsfml-system
+LIB       := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INC       := -I include -I src
 
 all: debug

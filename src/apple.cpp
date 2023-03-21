@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp> 
 
 #include "../include/apple.hpp"
 
@@ -16,6 +17,8 @@ Apple::Apple(sf::Texture appleTexture, sf::RenderWindow *window)
     appleSprite.setTexture(this->appleTexture);
     appleSprite.setScale(sf::Vector2f(0.4, 0.4));
     this->coordinate = this->getRandomCoordinate();
+    this->appleSoundBuffer.loadFromFile(EAT_APPLE_SOUND);
+    this->appleSound.setBuffer(this->appleSoundBuffer);
 }
 
 Apple::~Apple()
@@ -25,6 +28,7 @@ Apple::~Apple()
 
 void Apple::eatApple()
 {
+    this->playEatAppleSound();
     cout << "GOOD_JOB - SCORE:" << this->scoreCount << endl;
     this->scoreCount ++;
     this->coordinate = this->getRandomCoordinate();
@@ -50,6 +54,12 @@ Coordinate Apple::getRandomCoordinate()
     int randomY = rand() % MAX_TILES_NUMBER;
     cout << "x = " << randomX << " y = " << randomY << endl;
     return Coordinate{randomX, randomY, Direction::right};
+}
+
+void Apple::playEatAppleSound()
+{
+    cout << "PLAYING SOUND" << endl;
+    this->appleSound.play();
 }
 
 void Apple::printScore()
